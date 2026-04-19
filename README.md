@@ -50,7 +50,7 @@ The SVM achieved perfect precision, recall, and F1-score on both classes, while 
 │   └── texbat_analysis.ipynb        # Full signal-processing and ML pipeline
 └── docs/
     ├── project-proposal.pdf         # Original course assignment
-    └── course-material.pdf          # Supporting course material
+    └── presentation.pdf             # Final presentation slides
 ```
 
 ## How to Run
@@ -64,9 +64,11 @@ jupyter notebook notebooks/texbat_analysis.ipynb
 
 Download the TEXBAT `.bin` files (`CleanStatic.bin`, `ds1.bin`, `ds2.bin`) from the TEXBAT website and update the data paths near the top of the notebook to point to the local copies.
 
-## Author
+## Authors
 
 - Artur Vinicius Pereira Fernandes
+- Isabela Moura
+- Karina Lima
 
 Centro de Informatica (CIn), Universidade Federal de Pernambuco (UFPE).
 
