@@ -1,0 +1,365 @@
+{
+  "dataset": {
+    "total_epochs": 3303,
+    "clean_epochs": 1356,
+    "spoofed_epochs": 1947,
+    "scenarios": [
+      "cleanDynamic",
+      "cleanStatic",
+      "ds1",
+      "ds2",
+      "ds3",
+      "ds4",
+      "ds5",
+      "ds6"
+    ],
+    "features": [
+      "cn0_mean_dbhz",
+      "cn0_std_dbhz",
+      "cn0_temporal_jitter_dbhz",
+      "sqm_ratio_mean",
+      "sqm_ratio_max",
+      "sqm_ratio_std",
+      "sqm_delta_abs_mean",
+      "sqm_delta_std",
+      "corr_peak_norm_mean",
+      "corr_peak_cv",
+      "iq_quadrature_ratio",
+      "doppler_residual_hz",
+      "phase_slip_rate",
+      "pll_lock_mean",
+      "dll_code_error_rms_chips"
+    ]
+  },
+  "stratified_70_30": {
+    "SVM": {
+      "accuracy": 0.998,
+      "precision": 0.9966,
+      "recall": 1.0,
+      "f1": 0.9983,
+      "roc_auc": 0.9997,
+      "pr_auc": 0.9998,
+      "cv_mean_f1": 0.9989,
+      "best_params": {
+        "C": 5.0,
+        "gamma": "scale",
+        "kernel": "linear"
+      },
+      "confusion_matrix": [
+        [
+          404,
+          2
+        ],
+        [
+          0,
+          585
+        ]
+      ]
+    },
+    "Random Forest": {
+      "accuracy": 0.999,
+      "precision": 0.9983,
+      "recall": 1.0,
+      "f1": 0.9991,
+      "roc_auc": 1.0,
+      "pr_auc": 1.0,
+      "cv_mean_f1": 0.9996,
+      "best_params": {
+        "max_depth": 8,
+        "min_samples_leaf": 1,
+        "n_estimators": 100
+      },
+      "confusion_matrix": [
+        [
+          405,
+          1
+        ],
+        [
+          0,
+          585
+        ]
+      ]
+    },
+    "MLP (Neural Net)": {
+      "accuracy": 0.9939,
+      "precision": 0.9949,
+      "recall": 0.9949,
+      "f1": 0.9949,
+      "roc_auc": 0.9998,
+      "pr_auc": 0.9998,
+      "cv_mean_f1": 0.9956,
+      "best_params": {
+        "alpha": 0.0001,
+        "hidden_layer_sizes": [
+          64,
+          32
+        ]
+      },
+      "confusion_matrix": [
+        [
+          403,
+          3
+        ],
+        [
+          3,
+          582
+        ]
+      ]
+    }
+  },
+  "temporal_block_70_30": {
+    "SVM": {
+      "accuracy": 0.9979,
+      "precision": 1.0,
+      "recall": 0.9965,
+      "f1": 0.9982,
+      "roc_auc": 1.0,
+      "pr_auc": 1.0,
+      "best_params": {
+        "C": 1.0,
+        "gamma": "scale",
+        "kernel": "linear"
+      },
+      "confusion_matrix": [
+        [
+          385,
+          0
+        ],
+        [
+          2,
+          565
+        ]
+      ]
+    },
+    "Random Forest": {
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "roc_auc": 1.0,
+      "pr_auc": 1.0,
+      "best_params": {
+        "max_depth": 8,
+        "min_samples_leaf": 1,
+        "n_estimators": 200
+      },
+      "confusion_matrix": [
+        [
+          385,
+          0
+        ],
+        [
+          0,
+          567
+        ]
+      ]
+    },
+    "MLP (Neural Net)": {
+      "accuracy": 0.9884,
+      "precision": 0.9982,
+      "recall": 0.9824,
+      "f1": 0.9902,
+      "roc_auc": 0.9994,
+      "pr_auc": 0.9996,
+      "best_params": {
+        "alpha": 0.01,
+        "hidden_layer_sizes": [
+          32,
+          16
+        ]
+      },
+      "confusion_matrix": [
+        [
+          384,
+          1
+        ],
+        [
+          10,
+          557
+        ]
+      ]
+    }
+  },
+  "leave_one_attack_out": [
+    {
+      "held_out_scenario": "ds1",
+      "attack_type": "switch_over",
+      "platform": "static",
+      "model": "SVM (RBF)",
+      "unseen_attack_recall": 1.0,
+      "clean_false_alarm_rate": 0.0,
+      "fold_f1": 1.0,
+      "fold_roc_auc": 1.0
+    },
+    {
+      "held_out_scenario": "ds1",
+      "attack_type": "switch_over",
+      "platform": "static",
+      "model": "Random Forest",
+      "unseen_attack_recall": 1.0,
+      "clean_false_alarm_rate": 0.0,
+      "fold_f1": 1.0,
+      "fold_roc_auc": 1.0
+    },
+    {
+      "held_out_scenario": "ds1",
+      "attack_type": "switch_over",
+      "platform": "static",
+      "model": "MLP (Neural Net)",
+      "unseen_attack_recall": 1.0,
+      "clean_false_alarm_rate": 0.0,
+      "fold_f1": 1.0,
+      "fold_roc_auc": 1.0
+    },
+    {
+      "held_out_scenario": "ds2",
+      "attack_type": "overpowered_time",
+      "platform": "static",
+      "model": "SVM (RBF)",
+      "unseen_attack_recall": 1.0,
+      "clean_false_alarm_rate": 0.0,
+      "fold_f1": 1.0,
+      "fold_roc_auc": 1.0
+    },
+    {
+      "held_out_scenario": "ds2",
+      "attack_type": "overpowered_time",
+      "platform": "static",
+      "model": "Random Forest",
+      "unseen_attack_recall": 1.0,
+      "clean_false_alarm_rate": 0.0,
+      "fold_f1": 1.0,
+      "fold_roc_auc": 1.0
+    },
+    {
+      "held_out_scenario": "ds2",
+      "attack_type": "overpowered_time",
+      "platform": "static",
+      "model": "MLP (Neural Net)",
+      "unseen_attack_recall": 1.0,
+      "clean_false_alarm_rate": 0.0,
+      "fold_f1": 1.0,
+      "fold_roc_auc": 1.0
+    },
+    {
+      "held_out_scenario": "ds3",
+      "attack_type": "matched_time",
+      "platform": "static",
+      "model": "SVM (RBF)",
+      "unseen_attack_recall": 0.997,
+      "clean_false_alarm_rate": 0.0,
+      "fold_f1": 0.9985,
+      "fold_roc_auc": 1.0
+    },
+    {
+      "held_out_scenario": "ds3",
+      "attack_type": "matched_time",
+      "platform": "static",
+      "model": "Random Forest",
+      "unseen_attack_recall": 0.9818,
+      "clean_false_alarm_rate": 0.0,
+      "fold_f1": 0.9908,
+      "fold_roc_auc": 1.0
+    },
+    {
+      "held_out_scenario": "ds3",
+      "attack_type": "matched_time",
+      "platform": "static",
+      "model": "MLP (Neural Net)",
+      "unseen_attack_recall": 1.0,
+      "clean_false_alarm_rate": 0.0,
+      "fold_f1": 1.0,
+      "fold_roc_auc": 1.0
+    },
+    {
+      "held_out_scenario": "ds4",
+      "attack_type": "matched_pos",
+      "platform": "static",
+      "model": "SVM (RBF)",
+      "unseen_attack_recall": 0.869,
+      "clean_false_alarm_rate": 0.0,
+      "fold_f1": 0.9299,
+      "fold_roc_auc": 0.9998
+    },
+    {
+      "held_out_scenario": "ds4",
+      "attack_type": "matched_pos",
+      "platform": "static",
+      "model": "Random Forest",
+      "unseen_attack_recall": 0.8363,
+      "clean_false_alarm_rate": 0.0,
+      "fold_f1": 0.9109,
+      "fold_roc_auc": 1.0
+    },
+    {
+      "held_out_scenario": "ds4",
+      "attack_type": "matched_pos",
+      "platform": "static",
+      "model": "MLP (Neural Net)",
+      "unseen_attack_recall": 0.8125,
+      "clean_false_alarm_rate": 0.0,
+      "fold_f1": 0.8966,
+      "fold_roc_auc": 0.9987
+    },
+    {
+      "held_out_scenario": "ds5",
+      "attack_type": "overpowered_time",
+      "platform": "dynamic",
+      "model": "SVM (RBF)",
+      "unseen_attack_recall": 0.9902,
+      "clean_false_alarm_rate": 0.0,
+      "fold_f1": 0.9886,
+      "fold_roc_auc": 0.9995
+    },
+    {
+      "held_out_scenario": "ds5",
+      "attack_type": "overpowered_time",
+      "platform": "dynamic",
+      "model": "Random Forest",
+      "unseen_attack_recall": 0.9837,
+      "clean_false_alarm_rate": 0.0,
+      "fold_f1": 0.9918,
+      "fold_roc_auc": 0.9999
+    },
+    {
+      "held_out_scenario": "ds5",
+      "attack_type": "overpowered_time",
+      "platform": "dynamic",
+      "model": "MLP (Neural Net)",
+      "unseen_attack_recall": 0.9706,
+      "clean_false_alarm_rate": 0.0,
+      "fold_f1": 0.9818,
+      "fold_roc_auc": 0.998
+    },
+    {
+      "held_out_scenario": "ds6",
+      "attack_type": "matched_pos",
+      "platform": "dynamic",
+      "model": "SVM (RBF)",
+      "unseen_attack_recall": 0.9346,
+      "clean_false_alarm_rate": 0.0,
+      "fold_f1": 0.9597,
+      "fold_roc_auc": 0.9979
+    },
+    {
+      "held_out_scenario": "ds6",
+      "attack_type": "matched_pos",
+      "platform": "dynamic",
+      "model": "Random Forest",
+      "unseen_attack_recall": 0.9967,
+      "clean_false_alarm_rate": 0.0,
+      "fold_f1": 0.9967,
+      "fold_roc_auc": 1.0
+    },
+    {
+      "held_out_scenario": "ds6",
+      "attack_type": "matched_pos",
+      "platform": "dynamic",
+      "model": "MLP (Neural Net)",
+      "unseen_attack_recall": 0.951,
+      "clean_false_alarm_rate": 0.0,
+      "fold_f1": 0.9716,
+      "fold_roc_auc": 0.9959
+    }
+  ]
+}
