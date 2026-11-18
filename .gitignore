@@ -2,13 +2,14 @@
 __pycache__/
 *.py[cod]
 *$py.class
+.pytest_cache/
 
 # Jupyter checkpoints
 .ipynb_checkpoints/
 
 # Virtual environments
 .env
-.venv
+.venv/
 env/
 venv/
 ENV/
@@ -29,6 +30,14 @@ dist/
 Thumbs.db
 desktop.ini
 
-# Large TEXBAT recordings (download separately)
-data/
+# Large TEXBAT raw RF and GNSS-SDR binary files (download separately)
+data/*
+!data/processed/
+!data/processed/*.csv
+!data/processed/*.json
+!data/README.md
 *.bin
+*.16sc
+*.dat
+*.mat
+*.npy
